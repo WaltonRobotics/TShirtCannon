@@ -9,22 +9,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 
 /**
- * 
- * @author Walton Robotics
+ *
+ * @author 1009484
  */
 public class CompressorLocal extends Subsystem {
 
     // makes the compressor; parameters are: the pressure swith, the relay
-    private static Compressor comp = new Compressor
-        (RobotMap.compressorPressureSwitch, RobotMap.compressorRelay);
+    private static Compressor comp = new Compressor(RobotMap.compressorPressureSwitch, RobotMap.compressorRelay);
 
     protected void initDefaultCommand() {
     }
-    
-    /**
-     * Compresses air so that the loaded T-Shirt actually fires from the cannon
-     */
-    public static void runCompressor() { 
+
+    public static void runCompressor() { //it compresses the air so the t-shirt actually comes out of the cannon
         comp.start(); //starts the compressor
     }
 }

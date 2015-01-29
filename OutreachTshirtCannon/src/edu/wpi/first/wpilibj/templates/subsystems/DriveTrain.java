@@ -129,6 +129,8 @@ public class DriveTrain extends Subsystem {
     
     /**
      * finalDrive is used to set the motor speeds without acceleration limiting
+     * @param leftSpeed the numerical value from -1 to 1 of the left motor set
+     * @param rightSpeed the numerical value from -1 to 1 of the right motor set
      */
     public void finalDrive(double leftSpeed, double rightSpeed) {
         leftD1.set(-1 * limit(leftSpeed));

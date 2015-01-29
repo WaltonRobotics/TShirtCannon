@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  * Allows the connected joysticks to drive the robot.
+ *
  * @author Walton Robotics
  */
 public class DriveWithJoysticks extends CommandBase {
@@ -14,7 +15,7 @@ public class DriveWithJoysticks extends CommandBase {
     protected void initialize() {
         // System.out.println("DWJinit");
     }
-    
+
     /**
      * This is where joystick input meets motor output
      * <p>
@@ -26,7 +27,22 @@ public class DriveWithJoysticks extends CommandBase {
     protected void execute() {
         //instructions from the driver
         //System.out.println("drive execute");
-        double[] wheelSpeeds = getSpeeds();
+        double[] wheelSpeeds = new double[2];
+        if (oi.guestPad.getMode() == -1) {
+            wheelSpeeds = getSpeeds();
+        } else if (oi.guestPad.getMode() == 1) {
+            wheelSpeeds = getSpeeds();
+            wheelSpeeds[0] *= .5;
+            wheelSpeeds[1] *= .5;
+        } else if (oi.guestPad.getMode() == 2) {
+            wheelSpeeds = getSpeeds();
+            wheelSpeeds[0] *= (2 / 3);
+            wheelSpeeds[1] *= (2 / 3);
+        } else if (oi.guestPad.getMode() == 3) {
+            wheelSpeeds = getSpeeds();
+            wheelSpeeds[0] *= .8;
+            wheelSpeeds[1] *= .8;
+        }
         // System.out.println(wheelSpeeds[0] + "speeds 0" + wheelSpeeds[1] + "speeds 1");
         drive.drive(wheelSpeeds[0], wheelSpeeds[1]);
     }
@@ -42,9 +58,17 @@ public class DriveWithJoysticks extends CommandBase {
     }
 
     public double[] getSpeeds() {
-
-        double left = oi.getLeftY();
-        double right = oi.getRightY();
+        double left = 0, right = 0;
+        if (oi.guestPad.getMode() == -1) {
+            left = oi.getAdminLeftY();
+            right = oi.getAdminRightY();
+        } else {
+            int guestMode = oi.guestPad.getMode();
+            if (guestMode == 1 || guestMode == 2 || guestMode == 3) {
+                left = oi.getGuestLeftY();
+                right = oi.getGuestRightY();
+            }
+        }
 
         double[] instructions = new double[2];
 
@@ -53,7 +77,6 @@ public class DriveWithJoysticks extends CommandBase {
 //            left /= 4;
 //            right /= 4;
 //        }
-
         instructions[0] = left;
         instructions[1] = right;
 

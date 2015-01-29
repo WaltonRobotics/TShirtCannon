@@ -48,7 +48,7 @@ public class HoldSafety extends CommandBase {
             c.start(); //starts the timer
             while (c.get() < secondsHeld) { //waits for the timer to get to the 'secondsHeld' value
                 //safetyLight.spinLight(); //obvious enough but it spins the light while the button is held and timer is going
-                if (!oi.leftStick.getRawButton(3)) { //tests for the user releasing the button in the middle of the timer
+                if (!oi.adminPad.getRawButton(3)) { //tests for the user releasing the button in the middle of the timer
                     break; //breaks out of while if the user releases the button
                 }
             }
@@ -56,7 +56,7 @@ public class HoldSafety extends CommandBase {
             c.stop(); //stops the timer
         }
         // safetyLight.spinLight(); //obvious enough - it spins the light
-        if (oi.leftStick.getRawButton(3)) { //if the button is still held then you are safe to shoot
+        if (oi.adminPad.getRawButton(3)) { //if the button is still held then you are safe to shoot
             oi.setSafetyClear(true); //sets saftey true so the rest of the program knows it can shoot
         } else {
             oi.setSafetyClear(false); //sets saftey false so the rest of the program knows it CANNOT shoot

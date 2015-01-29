@@ -10,14 +10,21 @@ public class RobotMap {
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
 
-    public static final int LD1 = 1; // Left Drive 1? <front/back>
-    public static final int LD2 = 2; // Left Drive 2? <front/back>
-    public static final int RD1 = 3; // Right Drive 1? <front/back>
-    public static final int RD2 = 4; // Right Drive 2> <front/back>
+    public static final int LD1 = 1; // Left Drive 1
+    public static final int LD2 = 2; // Left Drive 2
+    public static final int RD1 = 3; // Right Drive 1
+    public static final int RD2 = 4; // Right Drive 2
     public static final int compressorPressureSwitch = 1; //correct number
     public static final int compressorRelay = 1; //correct number
     public static final int reloadSolenoid = 7; //correct for now
     public static final int shootSolenoid = 8; //correct for now
+    
+    //Axes
+    public static final int leftXAxis = 1;
+    public static final int leftYAxis = 2;
+    public static final int rightXAxis = 4;
+    public static final int rightYAxis = 5;
+    
     //public static final int cannonAngleSolenoid = 3; //*******CHANGE THIS WHEN WE KNOW WHICH NUMBER THE SOLENOID IS*********
     //public static final int safteyLightRelay = 10; //*******CHANGE THIS WHEN WE KNOW WHICH NUMBER THE SOLENOID IS*********
     //
